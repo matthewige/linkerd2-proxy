@@ -226,8 +226,7 @@ impl Config {
                 .push_failfast(dispatch_timeout)
                 // .push(metrics.http_errors)
                 // Synthesizes responses for proxy errors.
-                // .push(errors::layer())
-                ;
+                .push(errors::layer());
 
             let http_server_observability = svc::layers()
                 .push(TraceContextLayer::new(span_sink.map(|span_sink| {
